@@ -31,7 +31,7 @@ app.post('/login', async (req: Request, res: Response) => {
         })
     }
 
-    // compare password
+    // it basically checks whether the password entered by the user mactches with the stored password
     const compare_password = await bcypt.compare(password, user.hashedPassword)
     if (!compare_password) {
         return res.status(401).json({
@@ -54,7 +54,6 @@ app.post('/login', async (req: Request, res: Response) => {
         message: "Login successful",
         token: token
     })
-
 })
 
 app.post('/signup', async (req: Request, res: Response) => {
@@ -111,6 +110,14 @@ app.get('/users/:id', (req: Request, res: Response) => {
             message: "Failed to find the user with the given ID"
         })
     }
+})
+
+function verifyToken(){
+
+}
+
+app.get('/dashboard', verifyToken, (req: Request, res: Response) => {
+
 })
 
 app.get('/', (req: Request, res: Response) => {
