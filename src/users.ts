@@ -2,7 +2,7 @@ export interface User{
     id: number;
     name: string;
     email: string;
-    passwordHash: string;
+    hashedPassword: string;
 }
 
 // it will hold the "registered users"
